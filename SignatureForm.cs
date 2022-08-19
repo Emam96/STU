@@ -21,6 +21,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace DemoButtons
 {
@@ -1047,7 +1048,7 @@ namespace DemoButtons
             return m_penData != null ? m_information : null;
     }
     // Save the image in a local file
-    private void SaveImage()
+    private string SaveImage()
     {
             var Timestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
             try
@@ -1055,11 +1056,19 @@ namespace DemoButtons
             Bitmap bitmap = GetImage(new Rectangle(0, 0, m_capability.screenWidth, m_capability.screenHeight));
             string saveLocation = System.Environment.CurrentDirectory + "\\" + "signature_output_" + Timestamp + ".jpg";
             bitmap.Save(saveLocation, ImageFormat.Jpeg);
-        }
+                System.IO.MemoryStream ms = new MemoryStream();
+                bitmap.Save(ms, ImageFormat.Jpeg);
+                byte[] byteImage = ms.ToArray();
+                var SigBase64 = Convert.ToBase64String(byteImage);
+                Console.WriteLine("----------------Base64------------------="+SigBase64);
+                return SigBase64;
+            }
         catch (Exception ex)
         {
             MessageBox.Show("Exception: " + ex.Message);
-        }
+                return "Error";
+            }
+
     }
 
      
