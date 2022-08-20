@@ -16,7 +16,9 @@ namespace DemoButtons
     {
       System.Windows.Forms.Application.EnableVisualStyles();
       System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-      //System.Windows.Forms.Application.Run(new DemoButtonsForm());
+            //System.Windows.Forms.Application.Run(new DemoButtonsForm());
+            //STU sTU = new STU();
+            //sTU.Main();
             int penDataType;
             List<wgssSTU.IPenDataTimeCountSequence> penTimeData = null;
             List<wgssSTU.IPenData> penData = null;
@@ -40,8 +42,6 @@ namespace DemoButtons
                     if (penData != null || penTimeData != null)
                     {
                         // process penData here!
-
-
 
                         wgssSTU.IInformation information = demo.getInformation();
                         wgssSTU.ICapability capability = demo.getCapability();

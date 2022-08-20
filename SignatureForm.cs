@@ -275,9 +275,9 @@ namespace DemoButtons
          this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 
-         InitializeComponent();
+            InitializeComponent();
 
-         m_penData = new List<wgssSTU.IPenData>();
+            m_penData = new List<wgssSTU.IPenData>();
 
          m_tablet = new wgssSTU.Tablet();
          wgssSTU.ProtocolHelper protocolHelper = new wgssSTU.ProtocolHelper();
